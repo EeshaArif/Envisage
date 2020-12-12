@@ -23,4 +23,5 @@ jobs:
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          eslint: true  
+          eslint: true
+          prettier: true    
