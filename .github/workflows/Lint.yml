@@ -3,7 +3,7 @@ name: Lint
 on: 
   push:
    paths:
-     - 'frontend/**'
+     - '/github/workspace/frontend/**'
 
 jobs:
   run-linters:
