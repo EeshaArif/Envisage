@@ -1,4 +1,7 @@
 <p>messages works!</p>
 <div *ngFor="let message of messages">
-  {{ message.text }} from: {{ message.owner }}
+  <mat-card class="example-card">
+    <mat-card-title>{{ message.owner }}</mat-card-title>
+    <mat-card-content>{{ message.text }}</mat-card-content>
+  </mat-card>
 </div>
