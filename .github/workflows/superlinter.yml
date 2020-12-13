@@ -4,7 +4,7 @@ name: Super-Linter
 on: 
   push:
     paths-ignore: 
-      - '../../frontend/**'
+      - '/github/workspace/frontend/**'
 
 jobs:
   # Set the job key. The key is displayed as the job name
