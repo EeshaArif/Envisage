@@ -1,3 +1,4 @@
+import { WebService } from './../web.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,11 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.css'],
 })
 export class MessagesComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
   // placeholder data
-  messages = [
+  /*messages = [
     {
       text: 'some text',
       owner: 'Tim',
@@ -20,4 +18,13 @@ export class MessagesComponent implements OnInit {
       owner: 'Tana',
     },
   ];
+  */
+  messages: any;
+  constructor(private WebService: WebService) {}
+
+  ngOnInit() {
+    this.WebService.getMessages().subscribe((messages) => {
+      this.messages = messages;
+    });
+  }
 }
