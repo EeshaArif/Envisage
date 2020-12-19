@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "backend RESTFUL API for Envisage",
+  "description": "backend API for Envisage",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js --exec babel-node -e js",
@@ -10,7 +10,10 @@
   "author": "EeshaArif",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.11.8",
     "nodemon": "^2.0.6"
   },
   "devDependencies": {

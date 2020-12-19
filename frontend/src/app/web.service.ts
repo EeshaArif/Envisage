@@ -7,12 +7,13 @@ import { HttpClient } from '@angular/common/http';
 export class WebService {
   constructor(private http: HttpClient) {}
   getMessages() {
-    return this.http.get<MessagesResponse>('http://localhost:3000/message');
-    /*  .pipe(
-        map((response) => {
+    return this.http.get<MessagesResponse>('http://localhost:3000/api/message');
+    /*   .pipe(
+      map((response) => {
           return response.messages;
         })
-      );*/
+      );
+      */
   }
 }
 interface Message {
