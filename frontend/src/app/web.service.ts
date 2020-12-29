@@ -5,10 +5,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class WebService {
-  API_URL = 'http://localhost:3000';
+  BASE_URL = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
   getMessages() {
-    return this.http.get<MessagesResponse>(`${this.API_URL}/api/message`);
+    return this.http.get<MessagesResponse>(`${this.BASE_URL}/api/message`);
+  }
+  postMessage(message: Message) {
+    return this.http.post(`${this.BASE_URL}/api/message`, message);
   }
 }
 interface Message {

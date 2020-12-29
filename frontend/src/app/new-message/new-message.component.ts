@@ -1,5 +1,5 @@
-import { ConditionalExpr } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { WebService } from './../web.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-new-message',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./new-message.component.css'],
 })
 export class NewMessageComponent implements OnInit {
-  constructor() {}
+  @Output() onPosted = new EventEmitter();
+  constructor(private WebService: WebService) {}
 
   ngOnInit(): void {}
   message = {
@@ -16,7 +17,7 @@ export class NewMessageComponent implements OnInit {
   };
 
   post() {
-    console.log(this.message.owner);
-    console.log(this.message.text);
+    this.WebService.postMessage(this.message).subscribe();
+    this.onPosted.emit(this.message);
   }
 }
