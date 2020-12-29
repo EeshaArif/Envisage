@@ -22,7 +22,7 @@ export class MessagesComponent implements OnInit {
   messages: any;
   constructor(private WebService: WebService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.WebService.getMessages().subscribe((messages) => {
       this.messages = messages;
     });

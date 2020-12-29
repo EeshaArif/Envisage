@@ -5,15 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class WebService {
+  API_URL = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
   getMessages() {
-    return this.http.get<MessagesResponse>('http://localhost:3000/api/message');
-    /*   .pipe(
-      map((response) => {
-          return response.messages;
-        })
-      );
-      */
+    return this.http.get<MessagesResponse>(`${this.API_URL}/api/message`);
   }
 }
 interface Message {

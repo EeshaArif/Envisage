@@ -1,0 +1,22 @@
+import { ConditionalExpr } from '@angular/compiler';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-new-message',
+  templateUrl: './new-message.component.html',
+  styleUrls: ['./new-message.component.css'],
+})
+export class NewMessageComponent implements OnInit {
+  constructor() {}
+
+  ngOnInit(): void {}
+  message = {
+    owner: '',
+    text: '',
+  };
+
+  post() {
+    console.log(this.message.owner);
+    console.log(this.message.text);
+  }
+}
