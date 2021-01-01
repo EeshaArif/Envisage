@@ -1,4 +1,4 @@
-<div *ngFor="let message of service.messages">
+<div *ngFor="let message of messages">
   <mat-card class="card">
     <mat-card-title
       [routerLink]="['/messages', message.owner]"

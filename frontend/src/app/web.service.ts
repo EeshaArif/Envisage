@@ -2,14 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, Subject } from 'rxjs';
+
 import { Message } from './interfaces/message';
 @Injectable({
   providedIn: 'root',
 })
 export class WebService {
   BASE_URL = 'http://localhost:3000';
-  messages: Message[] = [];
+  private messages: Message[] = [];
+  messageSubject = new Subject();
+
   constructor(private http: HttpClient, private sb: MatSnackBar) {
     this.getMessages(null);
   }
@@ -25,6 +28,7 @@ export class WebService {
       )
       .subscribe((messages) => {
         this.messages = messages;
+        this.messageSubject.next(this.messages);
       });
   }
   postMessage(message: Message): void {
