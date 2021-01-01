@@ -11,11 +11,12 @@ export class WebService {
   BASE_URL = 'http://localhost:3000';
   messages: Message[] = [];
   constructor(private http: HttpClient, private sb: MatSnackBar) {
-    this.getMessages();
+    this.getMessages(null);
   }
-  getMessages(): void {
+  getMessages(user: any): void {
+    user = user ? '/' + user : '';
     this.http
-      .get<Message[]>(`${this.BASE_URL}/api/message`)
+      .get<Message[]>(`${this.BASE_URL}/api/messages${user}`)
       .pipe(
         catchError((err) => {
           this.sb.open('Unable to get messages', 'close', { duration: 5000 });
@@ -28,7 +29,7 @@ export class WebService {
   }
   postMessage(message: Message): void {
     this.http
-      .post(`${this.BASE_URL}/api/message`, message)
+      .post(`${this.BASE_URL}/api/messages`, message)
       .pipe(
         catchError((err) => {
           this.sb.open('Unable to post message', 'close', { duration: 5000 });

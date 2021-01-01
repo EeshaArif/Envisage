@@ -18,7 +18,14 @@ export const getMessages = (req, res) => {
     if (err) {
       res.send(err);
     }
-    console.log(messages);
+    res.json(messages);
+  });
+};
+export const getUserMessages = (req, res) => {
+  Message.find({ owner: req.params.user }, (err, messages) => {
+    if (err) {
+      res.send(err);
+    }
     res.json(messages);
   });
 };

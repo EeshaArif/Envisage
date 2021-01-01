@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import {
   addNewMessage,
   getMessages,
+  getUserMessages,
 } from "./src/controllers/messageController";
 require("dotenv").config();
 const app = express();
@@ -26,7 +27,8 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/frontend/dist/frontend/index.html"));
 });
 
-app.route("/api/message").get(getMessages).post(addNewMessage);
+app.route("/api/messages").get(getMessages).post(addNewMessage);
+app.route("/api/messages/:user").get(getUserMessages);
 
 app.listen(process.env.PORT, () => {
   console.log(`Your server is running on Port: ${process.env.PORT}`);
