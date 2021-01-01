@@ -1,5 +1,5 @@
 import { WebService } from './../web.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-new-message',
@@ -7,7 +7,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./new-message.component.css'],
 })
 export class NewMessageComponent implements OnInit {
-  @Output() onPosted = new EventEmitter();
   constructor(private WebService: WebService) {}
 
   ngOnInit(): void {}
@@ -17,7 +16,6 @@ export class NewMessageComponent implements OnInit {
   };
 
   post() {
-    this.WebService.postMessage(this.message).subscribe();
-    this.onPosted.emit(this.message);
+    this.WebService.postMessage(this.message);
   }
 }

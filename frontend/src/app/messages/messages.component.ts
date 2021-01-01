@@ -6,25 +6,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './messages.component.html',
   styleUrls: ['./messages.component.css'],
 })
-export class MessagesComponent implements OnInit {
-  // placeholder data
-  /*messages = [
-    {
-      text: 'some text',
-      owner: 'Tim',
-    },
-    {
-      text: 'more text',
-      owner: 'Tana',
-    },
-  ];
-  */
-  messages: any;
-  constructor(private WebService: WebService) {}
-
-  async ngOnInit() {
-    this.WebService.getMessages().subscribe((messages) => {
-      this.messages = messages;
-    });
-  }
+export class MessagesComponent {
+  constructor(public WebService: WebService) {}
 }

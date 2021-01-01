@@ -1,3 +1,4 @@
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { WebService } from './web.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { NewMessageComponent } from './new-message/new-message.component';
 import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent, MessagesComponent, NewMessageComponent],
   imports: [
@@ -24,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
+    MatSnackBarModule,
     HttpClientModule,
   ],
   providers: [WebService],
