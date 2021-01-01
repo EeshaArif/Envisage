@@ -1,7 +1,7 @@
 import { WebService } from './../web.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Message } from '../interfaces/message';
+import { Message } from '../Interfaces/message';
 
 @Component({
   selector: 'app-messages',
@@ -10,7 +10,7 @@ import { Message } from '../interfaces/message';
 })
 export class MessagesComponent implements OnInit {
   constructor(public service: WebService, private route: ActivatedRoute) {}
-  ngOnInit() {
+  ngOnInit(): void {
     const name = this.route.snapshot.params.name;
     this.service.getMessages(name);
   }

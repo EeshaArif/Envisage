@@ -1,3 +1,4 @@
+import { RegisterComponent } from './register/register.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'messages/:name',
     component: MessagesComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
 ];
 
