@@ -10,8 +10,9 @@ import { Message } from './interfaces/message';
 })
 export class WebService {
   BASE_URL = 'http://localhost:3000';
-  private messages: Message[] = [];
-  messageSubject = new Subject();
+  private messagesStore: Message[] = [];
+  private messageSubject = new Subject();
+  messages = this.messageSubject.asObservable();
 
   constructor(private http: HttpClient, private sb: MatSnackBar) {
     this.getMessages(null);
@@ -27,8 +28,8 @@ export class WebService {
         })
       )
       .subscribe((messages) => {
-        this.messages = messages;
-        this.messageSubject.next(this.messages);
+        this.messagesStore = messages;
+        this.messageSubject.next(this.messagesStore);
       });
   }
   postMessage(message: Message): void {
@@ -41,6 +42,7 @@ export class WebService {
         })
       )
       .subscribe();
-    this.messages.push(message);
+    this.messagesStore.push(message);
+    this.messageSubject.next(this.messagesStore);
   }
 }
