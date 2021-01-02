@@ -1,10 +1,8 @@
-import { ConditionalExpr } from '@angular/compiler';
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormGroup,
-  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
@@ -16,7 +14,7 @@ import {
 })
 export class RegisterComponent implements OnInit {
   form;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private auth: AuthService) {
     this.form = fb.group(
       {
         firstName: ['', Validators.required],
@@ -32,6 +30,7 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(): void {
     console.log(this.form.errors);
+    this.auth.register(this.form.value);
   }
   isValid(control: string): boolean {
     return (

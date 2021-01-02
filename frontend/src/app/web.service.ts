@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,7 +10,7 @@ import { Message } from './Interfaces/message';
   providedIn: 'root',
 })
 export class WebService {
-  BASE_URL = 'http://localhost:3000';
+  BASE_URL = environment.apiUrl;
   private messagesStore: Message[] = [];
   private messageSubject: Subject<Message[]> = new Subject();
   messages: Observable<Message[]> = this.messageSubject.asObservable();
@@ -20,7 +21,7 @@ export class WebService {
   getMessages(user: any): void {
     user = user ? '/' + user : '';
     this.http
-      .get<Message[]>(`${this.BASE_URL}/api/messages${user}`)
+      .get<Message[]>(`${this.BASE_URL}/messages${user}`)
       .pipe(
         catchError((err) => {
           this.sb.open('Unable to get messages', 'close', { duration: 5000 });
@@ -34,7 +35,7 @@ export class WebService {
   }
   postMessage(message: Message): void {
     this.http
-      .post(`${this.BASE_URL}/api/messages`, message)
+      .post(`${this.BASE_URL}/messages`, message)
       .pipe(
         catchError((err) => {
           this.sb.open('Unable to post message', 'close', { duration: 5000 });
