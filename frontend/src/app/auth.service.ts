@@ -11,6 +11,13 @@ export class AuthService {
   constructor(private http: HttpClient) {}
   register(user: any): void {
     delete user.confirmPassword;
-    this.http.post(`${this.BASE_URL}/register`, user).subscribe();
+    this.http
+      .post<{ firstName: string; token: string }>(
+        `${this.BASE_URL}/register`,
+        user
+      )
+      .subscribe((res) => {
+        localStorage.setItem('token', res.token);
+      });
   }
 }

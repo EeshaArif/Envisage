@@ -16,6 +16,7 @@ export const register = (req, res) => {
     } else {
       user.hashPassword = undefined;
       return res.json({
+        firstName: user.firstName,
         token: jwt.sign({ _id: user.id }, "RESTFULAPIs"),
       });
       //return res.json(user);
