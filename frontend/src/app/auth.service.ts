@@ -34,4 +34,9 @@ export class AuthService {
         this.router.navigate(['/']);
       });
   }
+
+  logout() {
+    localStorage.removeItem(this.NAME_KEY);
+    localStorage.removeItem(this.TOKEN_KEY);
+  }
 }

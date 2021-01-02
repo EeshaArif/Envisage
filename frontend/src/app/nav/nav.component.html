@@ -2,8 +2,18 @@
   <button mat-button routerLink="/">Message Board</button>
   <button mat-button routerLink="/messages">Messages</button>
   <span style="flex: 1 1 auto"></span>
-  <button mat-button routerLink="/register">Register</button>
-  <button *ngIf="auth.isAuthenticated" mat-button routerLink="/register">
+  <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/register">
+    Register
+  </button>
+  <button *ngIf="auth.isAuthenticated" mat-button routerLink="/">
     Welcome {{ auth.name }}
+  </button>
+  <button
+    (click)="auth.logout()"
+    *ngIf="auth.isAuthenticated"
+    mat-button
+    routerLink="/register"
+  >
+    Logout
   </button>
 </mat-toolbar>
