@@ -1,3 +1,4 @@
+import { User } from './../models/user';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -22,10 +23,10 @@ export class WebService {
   ) {
     this.getMessages(null);
   }
-  getMessages(user: any): void {
-    user = user ? '/' + user : '';
+  getMessages(user: User | null): void {
+    // const userUrl = user ? '/' + user : '';
     this.http
-      .get<Message[]>(`${this.BASE_URL}/messages${user}`)
+      .get<Message[]>(`${this.BASE_URL}/messages${user ? '/' + user : ''}`)
       .pipe(
         catchError((err) => {
           this.sb.open('Unable to get messages', 'close', { duration: 5000 });
@@ -50,9 +51,17 @@ export class WebService {
     this.messagesStore.push(message);
     this.messageSubject.next(this.messagesStore);
   }
-  getUser() {
-    return this.http
-      .get(`${this.BASE_URL}/users/me`, this.authService.tokenHeader)
-      .pipe(map((res) => {}));
+  getUser(): Observable<User> {
+    return this.http.get<User>(
+      `${this.BASE_URL}/users/me`,
+      this.authService.tokenHeader
+    );
+  }
+  updateUser(userData: User): Observable<User> {
+    return this.http.post<User>(
+      `${this.BASE_URL}/users/me`,
+      userData,
+      this.authService.tokenHeader
+    );
   }
 }

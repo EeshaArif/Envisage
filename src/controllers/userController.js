@@ -6,6 +6,29 @@ import { UserSchema } from "../models/userModel";
 
 const User = mongoose.model("User", UserSchema);
 
+export const getUser = (req, res) => {
+  User.findById(req.user._id, (err, user) => {
+    if (err) res.send(err);
+    user.hashPassword = undefined;
+    console.log(user);
+    res.json(user);
+  });
+};
+export const updateUser = (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    req.body,
+    { new: true, useFindAndModify: false },
+    (err, user) => {
+      if (err) {
+        res.send(err);
+      }
+      user.hashPassword = undefined;
+      res.json(user);
+    }
+  );
+};
+
 export const register = (req, res) => {
   const newUser = new User(req.body);
   newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
