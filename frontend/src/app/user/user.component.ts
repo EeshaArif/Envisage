@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UpdateUserModel } from '../models/user';
-import { WebService } from '../services/web.service';
+import { UpdateUserModel } from '../_models/user';
+import { WebService } from '../_services/web.service';
 
 @Component({
   selector: 'app-user',

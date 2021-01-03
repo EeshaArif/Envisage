@@ -1,4 +1,4 @@
-import { WebService } from '../services/web.service';
+import { WebService } from '../_services/web.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 

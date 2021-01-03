@@ -1,4 +1,4 @@
-import { User, UpdateUserModel } from './../models/user';
+import { User, UpdateUserModel } from '../_models/user';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, map } from 'rxjs/operators';
 import { throwError, Subject, Observable } from 'rxjs';
-import { Message } from '../models/message';
+import { Message } from '../_models/message';
 @Injectable({
   providedIn: 'root',
 })

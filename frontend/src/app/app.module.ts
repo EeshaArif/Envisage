@@ -1,5 +1,5 @@
-import { AuthService } from './services/auth.service';
-import { WebService } from './services/web.service';
+import { AuthService } from './_services/auth.service';
+import { WebService } from './_services/web.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';

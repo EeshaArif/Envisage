@@ -1,5 +1,5 @@
-import { Login } from '../models/authResponse';
-import { AuthService } from './../services/auth.service';
+import { Login } from '../_models/authResponse';
+import { AuthService } from '../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
