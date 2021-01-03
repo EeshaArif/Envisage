@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { WebService } from '../services/web.service';
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../models/message';
@@ -8,9 +9,9 @@ import { Message } from '../models/message';
   styleUrls: ['./new-message.component.css'],
 })
 export class NewMessageComponent implements OnInit {
-  constructor(private service: WebService) {}
+  constructor(private service: WebService, private authService: AuthService) {}
   message: Message = {
-    owner: '',
+    owner: this.authService.name,
     text: '',
   };
 

@@ -5,3 +5,7 @@ export interface User {
   password: string;
   confirmPassword?: string;
 }
+export interface UpdateUserModel {
+  firstName: string;
+  lastName: string;
+}

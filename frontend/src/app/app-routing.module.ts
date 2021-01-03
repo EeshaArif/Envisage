@@ -1,3 +1,4 @@
+import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'user',
+    component: UserComponent,
   },
 ];
 

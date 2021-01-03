@@ -1,4 +1,4 @@
-import { User } from './../models/user';
+import { User, UpdateUserModel } from './../models/user';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
@@ -57,7 +57,7 @@ export class WebService {
       this.authService.tokenHeader
     );
   }
-  updateUser(userData: User): Observable<User> {
+  updateUser(userData: UpdateUserModel): Observable<User> {
     return this.http.post<User>(
       `${this.BASE_URL}/users/me`,
       userData,

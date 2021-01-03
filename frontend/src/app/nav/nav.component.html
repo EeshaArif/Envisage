@@ -8,7 +8,7 @@
   <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/register">
     Register
   </button>
-  <button *ngIf="auth.isAuthenticated" mat-button routerLink="/">
+  <button *ngIf="auth.isAuthenticated" mat-button routerLink="/user">
     Welcome {{ auth.name }}
   </button>
   <button

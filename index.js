@@ -1,8 +1,7 @@
 import express from "express";
-import path from "path";
+// import path from "path";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import jsonwebtoken from "jsonwebtoken";
 import api from "./src/routes/apiRoutes";
 import auth from "./src/routes/authRoutes";
 
@@ -19,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-/*app.use((req, res, next) => {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -27,7 +26,7 @@ app.use(bodyParser.json());
   );
   next();
 });
-*/
+
 /*
 // jwt setup
 app.use((req, res, next) => {
@@ -51,11 +50,12 @@ app.use((req, res, next) => {
   }
 });
 */
+/*
 app.use(express.static(path.join(__dirname, "/frontend/dist/frontend")));
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname + "/frontend/dist/frontend/index.html"));
 });
-
+*/
 app.use("/api", api);
 app.use("/auth", auth);
 
