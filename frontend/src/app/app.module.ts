@@ -1,4 +1,5 @@
-import { WebService } from './web.service';
+import { AuthService } from './services/auth.service';
+import { WebService } from './services/web.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { NewMessageComponent } from './new-message/new-message.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { RegisterComponent } from './register/register.component';
     NavComponent,
     HomeComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { RegisterComponent } from './register/register.component';
     MatSnackBarModule,
     HttpClientModule,
   ],
-  providers: [WebService],
+  providers: [WebService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

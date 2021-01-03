@@ -1,6 +1,6 @@
-import { WebService } from './../web.service';
+import { WebService } from '../services/web.service';
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../Interfaces/message';
+import { Message } from '../models/message';
 
 @Component({
   selector: 'app-new-message',

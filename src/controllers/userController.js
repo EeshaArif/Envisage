@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import jsonwebtoken from "jsonwebtoken";
 import { UserSchema } from "../models/userModel";
 
 const User = mongoose.model("User", UserSchema);
@@ -15,10 +16,8 @@ export const register = (req, res) => {
       });
     } else {
       user.hashPassword = undefined;
-      return res.json({
-        firstName: user.firstName,
-        token: jwt.sign({ _id: user.id }, "RESTFULAPIs"),
-      });
+
+      return sendToken(user, res);
       //return res.json(user);
     }
   });
@@ -40,20 +39,56 @@ export const login = (req, res) => {
     (err, user) => {
       if (err) throw err;
       if (!user) {
-        res
+        return res
           .status(401)
           .json({ message: "Authentication Failed. No user found" });
       } else if (user) {
         if (!user.comparePassword(req.body.password, user.hashPassword)) {
-          res
+          return res
             .status(401)
             .json({ message: "Authentication Failed. Wrong Password" });
         } else {
-          return res.json({
-            token: jwt.sign({ email: user.email, _id: user.id }, "RESTFULAPIs"),
-          });
+          return sendToken(user, res);
         }
       }
     }
   );
 };
+
+function sendToken(user, res) {
+  return res.json({
+    firstName: user.firstName,
+    token: jwt.sign({ _id: user.id }, "RESTFULAPIs"),
+  });
+}
+
+export function checkAuthenticated(req, res, next) {
+  if (req.headers && req.headers.authorization) {
+    jsonwebtoken.verify(
+      req.headers.authorization.split(" ")[1],
+      "RESTFULAPIs",
+      (err, decode) => {
+        if (err) {
+          req.user = undefined;
+        }
+        req.user = decode;
+        next();
+      }
+    );
+  } else {
+    req.user = undefined;
+    next();
+  } /*
+  if (!req.header("authorization"))
+    return res.status(401).send({
+      message: "Unauthorized Request. Missing authentication headers",
+    });
+  const token = req.header("authorization").split(" ")[1];
+  const payload = jwt.decode(token, "RESTFULAPIs");
+  if (!payload)
+    return res
+      .status(401)
+      .send({ message: "Unauthorized Request, Authentication header invalid" });
+  req.user = payload;
+  next();*/
+}

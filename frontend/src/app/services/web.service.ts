@@ -1,11 +1,11 @@
-import { environment } from './../environments/environment';
+import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { throwError, Subject, Observable } from 'rxjs';
-
-import { Message } from './Interfaces/message';
+import { Message } from '../models/message';
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +15,11 @@ export class WebService {
   private messageSubject: Subject<Message[]> = new Subject();
   messages: Observable<Message[]> = this.messageSubject.asObservable();
 
-  constructor(private http: HttpClient, private sb: MatSnackBar) {
+  constructor(
+    private http: HttpClient,
+    private sb: MatSnackBar,
+    private authService: AuthService
+  ) {
     this.getMessages(null);
   }
   getMessages(user: any): void {
@@ -45,5 +49,10 @@ export class WebService {
       .subscribe();
     this.messagesStore.push(message);
     this.messageSubject.next(this.messagesStore);
+  }
+  getUser() {
+    return this.http
+      .get(`${this.BASE_URL}/users/me`, this.authService.tokenHeader)
+      .pipe(map((res) => {}));
   }
 }
