@@ -10,7 +10,6 @@ export const getUser = (req, res) => {
   User.findById(req.user._id, (err, user) => {
     if (err) res.send(err);
     user.hashPassword = undefined;
-    console.log(user);
     res.json(user);
   });
 };
