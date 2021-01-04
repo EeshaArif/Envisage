@@ -5,7 +5,7 @@
         matInput
         style="width: 340px"
         [ngClass]="{
-          error: isValid('firstName')
+          error: inValid('firstName')
         }"
         formControlName="firstName"
         placeholder="First Name"
@@ -16,7 +16,7 @@
         matInput
         style="width: 340px"
         [ngClass]="{
-          error: isValid('lastName')
+          error: inValid('lastName')
         }"
         formControlName="lastName"
         placeholder="Last Name"
@@ -27,19 +27,22 @@
         matInput
         style="width: 340px"
         [ngClass]="{
-          error: isValid('email')
+          error: inValid('email') || form.errors?.userExists
         }"
         type="email"
         formControlName="email"
         placeholder="Email"
-      /> </mat-form-field
+      />
+    </mat-form-field>
+    <span style="color: black" *ngIf="form.errors?.userExists"
+      >This email is taken!</span
     ><br />
     <mat-form-field>
       <input
         matInput
         style="width: 340px"
         [ngClass]="{
-          error: isValid('password')
+          error: inValid('password')
         }"
         type="password"
         formControlName="password"
@@ -51,7 +54,7 @@
         matInput
         style="width: 340px"
         [ngClass]="{
-          error: isValid('confirmPassword')
+          error: inValid('confirmPassword')
         }"
         type="password"
         formControlName="confirmPassword"

@@ -7,9 +7,18 @@ import { UserSchema } from "../models/userModel";
 const User = mongoose.model("User", UserSchema);
 
 export const getUser = (req, res) => {
+  if (!req.user) return;
   User.findById(req.user._id, (err, user) => {
     if (err) res.send(err);
     user.hashPassword = undefined;
+    res.json(user);
+  });
+};
+export const findUser = (req, res) => {
+  User.findOne({ email: req.body.email }, (err, user) => {
+    if (err) {
+      res.send(err);
+    }
     res.json(user);
   });
 };

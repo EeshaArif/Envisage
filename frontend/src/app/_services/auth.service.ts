@@ -46,6 +46,11 @@ export class AuthService {
         this.authenticate(res);
       });
   }
+  checkEmailNotTaken(email: string) {
+    return this.http.post(`${this.BASE_URL}/unique`, {
+      email
+    });
+  }
   authenticate(res: AuthResponse): void {
     if (!res.token) {
       return;
