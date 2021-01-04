@@ -48,7 +48,6 @@ export const register = (req, res) => {
       user.hashPassword = undefined;
 
       return sendToken(user, res);
-      //return res.json(user);
     }
   });
 };
@@ -108,17 +107,5 @@ export function checkAuthenticated(req, res, next) {
   } else {
     req.user = undefined;
     next();
-  } /*
-  if (!req.header("authorization"))
-    return res.status(401).send({
-      message: "Unauthorized Request. Missing authentication headers",
-    });
-  const token = req.header("authorization").split(" ")[1];
-  const payload = jwt.decode(token, "RESTFULAPIs");
-  if (!payload)
-    return res
-      .status(401)
-      .send({ message: "Unauthorized Request, Authentication header invalid" });
-  req.user = payload;
-  next();*/
+  }
 }

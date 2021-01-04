@@ -41,7 +41,7 @@ export const updateTask = (req, res) => {
 };
 
 export const deleteTask = (req, res) => {
-  Task.remove(
+  Task.deleteOne(
     {
       _id: req.params.taskId,
     },
