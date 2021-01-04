@@ -23,7 +23,9 @@ export class TaskService {
   private taskSubject: Subject<Task> = new Subject();
   tasks: Observable<Task[]> = this.tasksSubject.asObservable();
   task: Observable<Task> = this.taskSubject.asObservable();
-  constructor(private http: HttpClient, private sb: MatSnackBar) {}
+  constructor(private http: HttpClient, private sb: MatSnackBar) {
+    this.getAllTasks();
+  }
 
   getAllTasks(): void {
     this.http

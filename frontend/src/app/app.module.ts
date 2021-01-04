@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -23,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { UserComponent } from './user/user.component';
     RegisterComponent,
     LoginComponent,
     UserComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { UserComponent } from './user/user.component';
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
