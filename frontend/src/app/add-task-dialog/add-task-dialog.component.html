@@ -1,0 +1,59 @@
+<h1 mat-dialog-title>Add Photo</h1>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Task Description:</mat-label>
+    <textarea
+      matInput
+      placeholder="Enter your task"
+      formControlName="description"
+      required
+    ></textarea>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Start Date:</mat-label>
+    <input
+      matInput
+      placeholder="Enter date in [yyyy-mm-dd] format"
+      formControlName="start_date"
+      required
+    />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Due Date:</mat-label>
+    <input
+      matInput
+      placeholder="Enter date in [yyyy-mm-dd] format"
+      formControlName="end_date"
+      required
+    />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority">
+      <mat-option value="Low">Low</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="High">High</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option value="To Do">To Do</mat-option>
+      <mat-option value="Doing">Doing</mat-option>
+      <mat-option value="Done">Done</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    [disabled]="!form.valid"
+    class="mat-raised-button mat-primary"
+    (click)="save()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

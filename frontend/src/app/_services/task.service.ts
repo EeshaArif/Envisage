@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, throwError } from 'rxjs';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { Task } from '../_models/task';
+import { Task, TaskData } from '../_models/task';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
@@ -42,17 +42,19 @@ export class TaskService {
       });
   }
 
-  postTask(task: Task): void {
+  postTask(taskData: TaskData): void {
     this.http
-      .post(this.BASE_URL, task)
+      .post<Task>(this.BASE_URL, taskData)
       .pipe(
         catchError((err) => {
           return this.handleError('Cannot add Task');
         })
       )
-      .subscribe();
-    this.tasksStore.push(task);
-    this.tasksSubject.next(this.tasksStore);
+      .subscribe(task =>{
+        this.tasksStore.push(task);
+        this.tasksSubject.next(this.tasksStore);
+      });
+
   }
   getTask(id: string) {
     this.http
@@ -86,7 +88,6 @@ export class TaskService {
       .delete(`${this.BASE_URL}/${id}`)
       .pipe(
         catchError((err) => {
-          console.log(err);
           return this.handleError('Unable to delete task');
         })
       )

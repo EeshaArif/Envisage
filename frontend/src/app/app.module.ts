@@ -16,6 +16,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -26,6 +28,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { AddTaskDialogComponent } from './add-task-dialog/add-task-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { TasksComponent } from './tasks/tasks.component';
     LoginComponent,
     UserComponent,
     TasksComponent,
+    AddTaskDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +54,8 @@ import { TasksComponent } from './tasks/tasks.component';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
+    MatDialogModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
@@ -57,5 +63,6 @@ import { TasksComponent } from './tasks/tasks.component';
   ],
   providers: [WebService, AuthService, TaskService],
   bootstrap: [AppComponent],
+  entryComponents: [AddTaskDialogComponent],
 })
 export class AppModule {}

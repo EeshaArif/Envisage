@@ -4,7 +4,7 @@
     <h3 style="margin-right: 50px" class="headCells">Start Date</h3>
     <h3 style="margin-right: 50px" class="headCells">Due Date</h3>
     <h3 style="margin-right: 35px" class="headCells">Priority</h3>
-    <button mat-raised-button>New Task</button>
+    <button (click)="openDialog()" mat-raised-button>New Task</button>
   </mat-list-item>
   <mat-list-item *ngFor="let task of taskService.tasks | async">
     <p mat-line>{{ task.description }}</p>
