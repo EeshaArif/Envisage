@@ -1,4 +1,4 @@
-import { Task, TaskData } from './../_models/task';
+import { TaskData } from './../_models/task';
 import { TaskService } from './../_services/task.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';

@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
+  <h2>Envisage</h2>
   <button mat-button routerLink="/">Conversations</button>
-  <!--<button mat-button routerLink="/messages">Messages</button>-->
   <button mat-button routerLink="/tasks">Tasks</button>
   <span style="flex: 1 1 auto"></span>
   <button *ngIf="!auth.isAuthenticated" mat-button routerLink="/login">

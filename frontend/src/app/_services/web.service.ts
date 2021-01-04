@@ -24,7 +24,6 @@ export class WebService {
     this.getMessages(null);
   }
   getMessages(user: User | null): void {
-    // const userUrl = user ? '/' + user : '';
     this.http
       .get<Message[]>(`${this.BASE_URL}/messages${user ? '/' + user : ''}`)
       .pipe(
