@@ -2,9 +2,7 @@ import { AuthService } from '../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
-  AsyncValidatorFn,
   FormBuilder,
-  ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
