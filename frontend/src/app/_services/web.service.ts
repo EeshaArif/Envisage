@@ -40,16 +40,17 @@ export class WebService {
   }
   postMessage(message: Message): void {
     this.http
-      .post(`${this.BASE_URL}/messages`, message)
+      .post<Message>(`${this.BASE_URL}/messages`, message)
       .pipe(
         catchError((err) => {
           this.sb.open('Unable to post message', 'close', { duration: 5000 });
           return throwError('Cannot Post Message');
         })
       )
-      .subscribe();
-    this.messagesStore.push(message);
-    this.messageSubject.next(this.messagesStore);
+      .subscribe((message) => {
+        this.messagesStore.push(message);
+        this.messageSubject.next(this.messagesStore);
+      });
   }
   getUser(): Observable<User> {
     return this.http.get<User>(

@@ -19,5 +19,6 @@ export class NewMessageComponent implements OnInit {
 
   post(): void {
     this.service.postMessage(this.message);
+    this.message.text = '';
   }
 }

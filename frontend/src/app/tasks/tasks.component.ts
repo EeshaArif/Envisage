@@ -1,4 +1,4 @@
-import { Task } from './../_models/task';
+import { Task, TaskData } from './../_models/task';
 import { TaskService } from './../_services/task.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -29,7 +29,7 @@ export class TasksComponent implements OnInit {
     };
     const dialogRef = this.dialog.open(AddTaskDialogComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe((data) => {
+    dialogRef.afterClosed().subscribe((data: TaskData) => {
       this.taskService.postTask({
         description: data.description,
         start_date: data.start_date,

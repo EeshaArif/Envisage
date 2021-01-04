@@ -12,14 +12,17 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'messages',
     component: MessagesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'messages/:name',
     component: MessagesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'register',
@@ -37,6 +40,7 @@ const routes: Routes = [
   {
     path: 'tasks',
     component: TasksComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
