@@ -1,3 +1,4 @@
+import { TaskService } from './_services/task.service';
 import { AuthService } from './_services/auth.service';
 import { WebService } from './_services/web.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -48,7 +49,7 @@ import { UserComponent } from './user/user.component';
     MatSnackBarModule,
     HttpClientModule,
   ],
-  providers: [WebService, AuthService],
+  providers: [WebService, AuthService, TaskService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
