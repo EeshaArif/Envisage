@@ -13,6 +13,7 @@ export class TaskService {
   BASE_URL = `${environment.apiUrl}/tasks`;
   private tasksStore: Task[] = [];
   private taskStore: Task = {
+    _id: '',
     description: '',
     start_date: '',
     end_date: '',
@@ -85,6 +86,7 @@ export class TaskService {
       .delete(`${this.BASE_URL}/${id}`)
       .pipe(
         catchError((err) => {
+          console.log(err);
           return this.handleError('Unable to delete task');
         })
       )

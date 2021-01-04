@@ -1,3 +1,4 @@
+import { Task } from './../_models/task';
 import { TaskService } from './../_services/task.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,5 +12,8 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.getAllTasks();
+  }
+  onDelete(taskId: string): void {
+    this.taskService.deleteTask(taskId);
   }
 }

@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { MessagesComponent } from './messages/messages.component';
@@ -48,6 +49,7 @@ import { TasksComponent } from './tasks/tasks.component';
     MatInputModule,
     MatToolbarModule,
     MatListModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
